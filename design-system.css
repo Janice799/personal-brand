@@ -1,0 +1,444 @@
+/* ============================================
+   🎨 Personal Branding Design System
+   분위기: 모던 & 따뜻한 베이지
+   용도: 퍼스널브랜딩 개인 소개앱
+   ============================================ */
+
+/* ============================================
+   📦 CSS 변수 (Design Tokens)
+   ============================================ */
+:root {
+  /* 🎨 Color Palette - 베이지 모던 */
+  --color-primary: #8B7355;        /* 웜 브라운 - 메인 강조색 */
+  --color-primary-light: #A08B70;  /* 라이트 브라운 */
+  --color-primary-dark: #6B5744;   /* 다크 브라운 */
+  
+  --color-secondary: #C4A77D;      /* 골드 베이지 - 포인트 */
+  --color-accent: #D4A574;         /* 카라멜 - 버튼/링크 */
+  
+  /* 배경색 */
+  --color-bg-main: #FAF7F2;        /* 크림 화이트 - 메인 배경 */
+  --color-bg-card: #FFFFFF;        /* 순백 - 카드 배경 */
+  --color-bg-section: #F5F0E8;     /* 라이트 베이지 - 섹션 구분 */
+  --color-bg-dark: #2C2825;        /* 다크 브라운 - 푸터/다크섹션 */
+  
+  /* 텍스트 */
+  --color-text-primary: #2C2825;   /* 거의 검정 - 제목 */
+  --color-text-secondary: #5C5552; /* 회갈색 - 본문 */
+  --color-text-muted: #9C9590;     /* 연한 회색 - 부가 정보 */
+  --color-text-inverse: #FAF7F2;   /* 크림 - 다크 배경 위 텍스트 */
+  
+  /* 보더 & 라인 */
+  --color-border: #E8E2D9;         /* 연한 베이지 - 구분선 */
+  --color-border-focus: #8B7355;   /* 포커스 상태 */
+  
+  /* ✏️ Typography - 폰트 설정 */
+  --font-heading: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-accent: 'Playfair Display', Georgia, serif;  /* 영문 포인트 */
+  
+  /* 폰트 크기 */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 2rem;        /* 32px */
+  --text-4xl: 2.5rem;      /* 40px */
+  --text-5xl: 3.5rem;      /* 56px - 히어로 타이틀 */
+  
+  /* 폰트 굵기 */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  /* 📐 Spacing - 여백 */
+  --space-1: 0.25rem;      /* 4px */
+  --space-2: 0.5rem;       /* 8px */
+  --space-3: 0.75rem;      /* 12px */
+  --space-4: 1rem;         /* 16px */
+  --space-5: 1.5rem;       /* 24px */
+  --space-6: 2rem;         /* 32px */
+  --space-8: 3rem;         /* 48px */
+  --space-10: 4rem;        /* 64px */
+  --space-12: 6rem;        /* 96px */
+  
+  /* 🔲 Border Radius - 모서리 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;   /* 완전 둥근 */
+  
+  /* 🌫️ Shadow - 그림자 */
+  --shadow-sm: 0 1px 2px rgba(44, 40, 37, 0.05);
+  --shadow-md: 0 4px 12px rgba(44, 40, 37, 0.08);
+  --shadow-lg: 0 8px 24px rgba(44, 40, 37, 0.12);
+  --shadow-xl: 0 16px 48px rgba(44, 40, 37, 0.16);
+  
+  /* ⏱️ Transition - 애니메이션 */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+  
+  /* 📱 Container - 컨테이너 너비 */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1200px;
+}
+
+/* ============================================
+   🔤 Typography Styles
+   ============================================ */
+
+/* 기본 HTML 리셋 & 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 제목 스타일 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
+  font-weight: var(--font-semibold);
+  line-height: 1.3;
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--text-4xl);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: var(--text-2xl);
+}
+
+h4 {
+  font-size: var(--text-xl);
+}
+
+/* 영문 포인트 텍스트 */
+.accent-text {
+  font-family: var(--font-accent);
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+/* 본문 텍스트 */
+p {
+  margin-bottom: var(--space-4);
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ============================================
+   🔘 Button Styles
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+/* Primary 버튼 - 메인 CTA */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Secondary 버튼 - 보조 */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Accent 버튼 - 강조 */
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+.btn-accent:hover {
+  background-color: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* 버튼 크기 */
+.btn-sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.btn-lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-lg);
+}
+
+/* ============================================
+   🃏 Card Styles
+   ============================================ */
+
+.card {
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.card-bordered {
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+.card-bordered:hover {
+  border-color: var(--color-primary-light);
+}
+
+/* ============================================
+   📦 Container & Layout
+   ============================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.section {
+  padding: var(--space-12) 0;
+}
+
+.section-alt {
+  background-color: var(--color-bg-section);
+}
+
+/* ============================================
+   🔗 Link Styles
+   ============================================ */
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width var(--transition-base);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   📥 Input Styles
+   ============================================ */
+
+.input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   🏷️ Badge & Tag Styles
+   ============================================ */
+
+.badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-section);
+  color: var(--color-text-secondary);
+}
+
+.badge-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.badge-accent {
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+/* ============================================
+   ✨ Utility Classes
+   ============================================ */
+
+/* 텍스트 정렬 */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Flexbox */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+
+/* Grid */
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* 마진 */
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-8 { margin-top: var(--space-8); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+
+/* ============================================
+   📱 Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --text-5xl: 2.5rem;
+    --text-4xl: 2rem;
+    --text-3xl: 1.5rem;
+  }
+  
+  .container {
+    padding: 0 var(--space-4);
+  }
+  
+  .section {
+    padding: var(--space-8) 0;
+  }
+  
+  .grid-cols-2,
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   🌙 Dark Section (Footer 등)
+   ============================================ */
+
+.dark-section {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+}
+
+.dark-section h1,
+.dark-section h2,
+.dark-section h3,
+.dark-section h4 {
+  color: var(--color-text-inverse);
+}
+
+.dark-section p {
+  color: rgba(250, 247, 242, 0.8);
+}
+
+.dark-section a {
+  color: var(--color-secondary);
+}
+
+.dark-section a:hover {
+  color: var(--color-accent);
+}
